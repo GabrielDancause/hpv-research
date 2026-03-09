@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "generatedAt": "2026-03-09T10:30:05.646Z",
+    "methodology": "Data aggregated from UniProtKB via REST API. Structural domains annotated from UniProt features. Sequence identities derived from literature alignments.",
+    "sources": [
+      "UniProt",
+      "PDB",
+      "NCBI"
+    ]
+  },
+  "data": [
+    {
+      "genotype": "HPV-16",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 284,
+      "dbdStart": 285,
+      "dbdEnd": 365,
+      "pdbIds": [],
+      "uniprotId": "A0A140FB34",
+      "sequenceIdentityToHPV16": 100,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-18",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 285,
+      "dbdStart": 286,
+      "dbdEnd": 365,
+      "pdbIds": [],
+      "uniprotId": "A0A291PPP5",
+      "sequenceIdentityToHPV16": 44.1,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-31",
+      "riskLevel": "high",
+      "e2Length": 375,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 295,
+      "dbdStart": 296,
+      "dbdEnd": 375,
+      "pdbIds": [],
+      "uniprotId": "P36788",
+      "sequenceIdentityToHPV16": 70.3,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-33",
+      "riskLevel": "high",
+      "e2Length": 394,
+      "tadStart": 1,
+      "tadEnd": 201,
+      "hingeStart": 202,
+      "hingeEnd": 306,
+      "dbdStart": 307,
+      "dbdEnd": 394,
+      "pdbIds": [],
+      "uniprotId": "P36791",
+      "sequenceIdentityToHPV16": 64.5,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-45",
+      "riskLevel": "high",
+      "e2Length": 366,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 284,
+      "dbdStart": 285,
+      "dbdEnd": 366,
+      "pdbIds": [],
+      "uniprotId": "A0A0P0EC08",
+      "sequenceIdentityToHPV16": 45.2,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-58",
+      "riskLevel": "high",
+      "e2Length": 378,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 294,
+      "dbdStart": 295,
+      "dbdEnd": 378,
+      "pdbIds": [],
+      "uniprotId": "A0A159DTM8",
+      "sequenceIdentityToHPV16": 65.1,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": 70,
+      "oncogenicRole": "Loss of E2 expression upon viral integration leads to unchecked E6/E7 oncogene transcription, driving cellular transformation and carcinogenesis."
+    },
+    {
+      "genotype": "HPV-6",
+      "riskLevel": "low",
+      "e2Length": 400,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 320,
+      "dbdStart": 321,
+      "dbdEnd": 400,
+      "pdbIds": [],
+      "uniprotId": "A0A0K1YWP0",
+      "sequenceIdentityToHPV16": 42.4,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": null,
+      "oncogenicRole": "Maintains the viral episome and regulates early gene expression in benign lesions. Rarely integrates."
+    },
+    {
+      "genotype": "HPV-11",
+      "riskLevel": "low",
+      "e2Length": 548,
+      "tadStart": 1,
+      "tadEnd": 200,
+      "hingeStart": 201,
+      "hingeEnd": 463,
+      "dbdStart": 464,
+      "dbdEnd": 548,
+      "pdbIds": [],
+      "uniprotId": "A0A385KLQ0",
+      "sequenceIdentityToHPV16": 43.1,
+      "knownBindingPartners": [
+        "E1",
+        "Brd4",
+        "p53",
+        "Sp1"
+      ],
+      "integrationDisruptionFreq": null,
+      "oncogenicRole": "Maintains the viral episome and regulates early gene expression in benign lesions. Rarely integrates."
+    }
+  ]
+}
