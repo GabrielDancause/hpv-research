@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gabrieldancause.github.io/hpv-research/sitemap.xml

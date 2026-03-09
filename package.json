@@ -7,6 +7,22 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.0.0"
-  }
+    "astro": "^4.0.0",
+    "axios": "^1.13.6",
+    "cheerio": "^1.2.0"
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielDancause/hpv-research.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GabrielDancause/hpv-research/issues"
+  },
+  "homepage": "https://github.com/GabrielDancause/hpv-research#readme"
 }
