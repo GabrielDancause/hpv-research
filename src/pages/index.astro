@@ -1,0 +1,88 @@
+---
+import BaseHead from '../layouts/BaseHead.astro';
+
+const studies = [
+  {
+    title: "HPV E2 Protein: Structure, Function & Therapeutic Targets",
+    subtitle: "Coming Soon",
+    slug: "#",
+    stat: "E2",
+    statLabel: "master regulator of HPV lifecycle",
+    desc: "Comprehensive analysis of the E2 protein across HPV genotypes — its role in viral replication, transcription regulation, genome maintenance, and why it's a key target for therapeutic intervention.",
+    tag: "UPCOMING",
+  },
+];
+
+const tools = [];
+const guides = [];
+const lists = [];
+---
+<html lang="en">
+<head>
+  <BaseHead />
+  <title>HPV Research — Human Papillomavirus Data & Analysis</title>
+  <meta name="description" content="Open-access research on Human Papillomavirus (HPV). E2 protein analysis, genotype data, epidemiology, and therapeutic targets." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #060a12; color: #c8d0de; }
+    .hero { text-align: center; padding: 100px 24px 70px; background: linear-gradient(180deg, #0a1220 0%, #060a12 100%); position: relative; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(16,185,129,0.08) 0%, transparent 60%); }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 3rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 8px; color: #fff; }
+    .hero .tagline { color: #10b981; font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+    .hero p { color: #5a6a80; font-size: 1.05rem; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+    .section-container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .section-header { text-align: center; margin-bottom: 32px; padding-top: 20px; }
+    .section-tag { display: inline-block; background: #0d1a2e; color: #10b981; font-size: 0.7rem; font-weight: 800; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 12px; }
+    .section-title { font-size: 1.8rem; font-weight: 900; color: #fff; margin-bottom: 6px; }
+    .section-sub { color: #4a5568; font-size: 0.9rem; }
+    .studies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-bottom: 60px; }
+    .study-card { background: linear-gradient(135deg, #0a1020 0%, #0d1428 100%); border: 1px solid #152040; border-radius: 16px; padding: 28px 24px; text-decoration: none; color: inherit; display: block; transition: border-color 0.3s, transform 0.2s; }
+    .study-card:hover { border-color: #10b981; transform: translateY(-2px); }
+    .study-tag { display: inline-block; background: rgba(16,185,129,0.1); color: #10b981; font-size: 0.58rem; font-weight: 800; padding: 3px 10px; border-radius: 12px; letter-spacing: 0.8px; margin-bottom: 14px; }
+    .stat-number { display: block; font-size: 2.2rem; font-weight: 900; color: #10b981; line-height: 1; }
+    .stat-label { display: block; font-size: 0.78rem; color: #4a5568; margin-top: 4px; }
+    .study-title { font-size: 1.05rem; font-weight: 800; color: #e0e8f0; margin-bottom: 4px; margin-top: 14px; }
+    .study-subtitle { font-size: 0.75rem; color: #10b981; margin-bottom: 10px; font-weight: 600; }
+    .study-desc { font-size: 0.82rem; color: #5a6a80; line-height: 1.6; }
+    .footer { text-align: center; padding: 50px 24px; font-size: 0.75rem; color: #253040; border-top: 1px solid #101828; }
+    .footer a { color: #10b981; text-decoration: none; }
+    .footer .disclaimer { max-width: 600px; margin: 12px auto 0; color: #1e2a3a; font-size: 0.68rem; line-height: 1.5; }
+    @media (max-width: 600px) { .hero h1 { font-size: 2.2rem; } .studies-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-content">
+    <div class="tagline">Open-Access Virology Research</div>
+    <h1>HPV Research</h1>
+    <p>Data-driven analysis of Human Papillomavirus — protein structures, genotype classification, epidemiology, and therapeutic targets. Open access, no paywalls.</p>
+  </div>
+</div>
+<div class="section-container">
+  <div class="section-header">
+    <span class="section-tag">🧬 RESEARCH</span>
+    <h2 class="section-title">Studies</h2>
+    <p class="section-sub">Original research and data compilation.</p>
+  </div>
+  <div class="studies-grid">
+    {studies.map(s => (
+      <a class="study-card" href={s.slug}>
+        <span class="study-tag">{s.tag}</span>
+        <div>
+          <span class="stat-number">{s.stat}</span>
+          <span class="stat-label">{s.statLabel}</span>
+        </div>
+        <h3 class="study-title">{s.title}</h3>
+        <p class="study-subtitle">{s.subtitle}</p>
+        <p class="study-desc">{s.desc}</p>
+      </a>
+    ))}
+  </div>
+</div>
+<div class="footer">
+  © 2026 <a href="/">HPV Research</a> · A <a href="https://gab.ae">GAB Ventures</a> property
+  <div class="disclaimer">This site provides scientific data for educational and research purposes only. It is not medical advice. Consult a healthcare professional for any medical decisions.</div>
+</div>
+</body>
+</html>
