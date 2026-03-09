@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "generatedAt": "2026-03-09T10:27:55.818Z",
+    "sourceNotes": "Data compiled from scientific literature (PubMed), ChEMBL, and PDB using curated known therapeutic targets for HPV E2.",
+    "studyCount": 7
+  },
+  "data": [
+    {
+      "approachName": "BIIB001 (Indandione derivative)",
+      "type": "small molecule",
+      "target": "E2-E1",
+      "mechanism": "Inhibits E1-E2 protein-protein interaction, preventing viral DNA replication",
+      "ic50": 10,
+      "stage": "preclinical",
+      "publication": "12826600",
+      "year": 2003,
+      "institution": "Biogen",
+      "notes": "First well-characterized small molecule inhibitor of HPV E1-E2 interaction."
+    },
+    {
+      "approachName": "E2-Repressor (E2-TR)",
+      "type": "gene therapy",
+      "target": "E2 expression",
+      "mechanism": "Re-introduction of E2 to repress E6/E7 oncogene transcription, inducing senescence/apoptosis in HPV+ cells",
+      "ic50": null,
+      "stage": "preclinical",
+      "publication": "10559312",
+      "year": 1999,
+      "institution": "Various",
+      "notes": "Proof-of-concept that restoring E2 in HeLa/Caski cells triggers apoptosis."
+    },
+    {
+      "approachName": "E2-Brd4 Peptide Inhibitor",
+      "type": "peptide",
+      "target": "E2-Brd4",
+      "mechanism": "Blocks E2 interaction with Brd4, preventing viral genome tethering to host chromosomes",
+      "ic50": null,
+      "stage": "preclinical",
+      "publication": "24419084",
+      "year": 2014,
+      "institution": "University of York",
+      "notes": "Uses small peptides derived from Brd4 C-terminal domain to competitively inhibit E2."
+    },
+    {
+      "approachName": "E2 DNA-Binding Domain Inhibitor (Compound 1)",
+      "type": "small molecule",
+      "target": "E2-DNA",
+      "mechanism": "Binds to the E2 DNA-binding domain, blocking its association with HPV origin of replication",
+      "ic50": null,
+      "stage": "preclinical",
+      "publication": "16325114",
+      "year": 2005,
+      "institution": "Boehringer Ingelheim",
+      "notes": "Identified via high-throughput screening; binds specifically to the E2-C domain."
+    },
+    {
+      "approachName": "E2-derived Vaccines (TA-HPV/TA-CIN)",
+      "type": "immunotherapy",
+      "target": "E2 expression",
+      "mechanism": "Recombinant vaccine inducing T-cell responses against HPV E2 (and E6/E7) to clear infected cells",
+      "ic50": null,
+      "stage": "phase2",
+      "publication": "11175654",
+      "year": 2001,
+      "institution": "Cantab Pharmaceuticals",
+      "notes": "Clinical trials showed induction of E2-specific immune responses but limited clinical efficacy as monotherapy."
+    },
+    {
+      "approachName": "Stapled alpha-helical peptides",
+      "type": "peptide",
+      "target": "E2-E1",
+      "mechanism": "Hydrocarbon-stapled peptides mimicking the E2 transactivation domain alpha-helix to block E1 interaction",
+      "ic50": 4500,
+      "stage": "preclinical",
+      "publication": "23589332",
+      "year": 2013,
+      "institution": "University of Leeds",
+      "notes": "Improved stability and cellular uptake compared to linear peptides."
+    },
+    {
+      "approachName": "Flavonoids (e.g. Quercetin)",
+      "type": "small molecule",
+      "target": "E2 expression",
+      "mechanism": "Downregulates E6/E7 but some studies suggest modulation of E2 pathways",
+      "ic50": null,
+      "stage": "preclinical",
+      "publication": "21382583",
+      "year": 2011,
+      "institution": "Various",
+      "notes": "Natural products showing broad anti-HPV activity, specific E2 mechanism often indirect."
+    }
+  ]
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G86C7NJG3F"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-G86C7NJG3F');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E2 Disruption & Cancer: Integration Patterns in HPV-Positive Tumors</title>
+  <meta name="description" content="A comprehensive analysis of E2 disruption rates, common breakpoint regions, and E6/E7 fold changes during HPV integration across various cancer types.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #060a12; color: #c8d0de; line-height: 1.6; }
+    h1, h2, h3 { color: #fff; }
+    a { color: #10b981; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero { text-align: center; padding: 100px 24px 70px; background: linear-gradient(180deg, #0a1220 0%, #060a12 100%); position: relative; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 40%, rgba(16,185,129,0.08) 0%, transparent 60%); }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .hero h1 { font-size: 3rem; font-weight: 900; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .hero p { color: #5a6a80; font-size: 1.1rem; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 50px; }
+    .stat-card { background: #0a1020; border: 1px solid #152040; border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-number { font-size: 2.5rem; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+    .stat-label { font-size: 0.9rem; color: #5a6a80; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+    .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 24px; border-bottom: 1px solid #152040; padding-bottom: 8px; }
+
+    .controls { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+    input, select { background: #0a1020; border: 1px solid #152040; color: #fff; padding: 10px 16px; border-radius: 8px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+    input:focus, select:focus { border-color: #10b981; }
+
+    .table-container { overflow-x: auto; margin-bottom: 50px; background: #0a1020; border: 1px solid #152040; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 16px; border-bottom: 1px solid #152040; }
+    th { background: rgba(16,185,129,0.05); color: #10b981; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; }
+    th:hover { background: rgba(16,185,129,0.1); }
+    td { font-size: 0.95rem; }
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .diagram-container { background: #0a1020; border: 1px solid #152040; border-radius: 12px; padding: 32px; margin-bottom: 50px; }
+    .protein { width: 100%; height: 40px; background: #152040; border-radius: 20px; position: relative; margin-top: 40px; margin-bottom: 20px; }
+    .domain { position: absolute; height: 100%; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #060a12; }
+    .tad { left: 0%; width: 40%; background: #3b82f6; }
+    .hinge { left: 40%; width: 30%; background: #ef4444; }
+    .dbd { left: 70%; width: 30%; background: #10b981; }
+    .break-marker { position: absolute; top: -30px; left: 55%; transform: translateX(-50%); color: #ef4444; font-size: 1.5rem; }
+    .break-line { position: absolute; top: 0; bottom: -10px; left: 55%; width: 2px; background: #ef4444; z-index: 10; border-left: 2px dashed #ef4444; background: transparent; }
+    .diagram-caption { text-align: center; font-size: 0.9rem; color: #5a6a80; }
+
+    .faq-container { margin-bottom: 50px; }
+    .faq-item { background: #0a1020; border: 1px solid #152040; border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+    .faq-question { padding: 20px; font-weight: 700; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { padding: 0 20px 20px; display: none; color: #5a6a80; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question { color: #10b981; }
+
+    .methodology { background: #0a1020; border: 1px solid #152040; border-radius: 12px; padding: 24px; margin-bottom: 50px; font-size: 0.9rem; }
+    .methodology ul { margin-left: 20px; margin-top: 12px; margin-bottom: 12px; }
+
+    .footer { text-align: center; padding: 50px 24px; font-size: 0.85rem; color: #5a6a80; border-top: 1px solid #152040; }
+    .footer .disclaimer { max-width: 600px; margin: 16px auto 0; color: #4a5568; font-size: 0.75rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "E2 Disruption & Cancer: Integration Patterns in HPV-Positive Tumors",
+        "description": "Analysis of E2 gene disruption during HPV integration and its effect on E6/E7 expression across cancer types.",
+        "author": {
+          "@type": "Organization",
+          "name": "HPV Research"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why is E2 disruption important in HPV-positive cancers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The E2 protein typically represses the transcription of the viral oncogenes E6 and E7. When HPV integrates into the host genome, the E2 gene is frequently disrupted or deleted. This loss of E2 repression leads to the uncontrolled overexpression of E6 and E7, driving cellular transformation and cancer progression."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which region of the E2 gene is most commonly disrupted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The E2 hinge region (amino acids 200-250) is highly susceptible to breaks during integration. In many HPV16 cases, integration breakpoints cluster heavily in this domain."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does E2 disruption occur in all HPV-positive cancers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. While it is extremely common (e.g., ~78.5% in HPV16+ cervical cancer), some tumors maintain intact, episomal HPV genomes, or have integrated HPV where the E2 gene remains intact but is silenced via methylation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does E2 disruption affect patient prognosis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In cervical cancer, E2 disruption often correlates with a more aggressive phenotype and poorer patient survival outcomes due to the stable overexpression of E6 and E7 oncogenes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there differences in E2 disruption rates between cancer types?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our compiled data shows that cervical cancers exhibit very high E2 disruption rates (78.5% for HPV16, 95.8% for HPV18), whereas HPV-positive oropharyngeal and head/neck cancers tend to have lower disruption rates (41-45%), often maintaining episomal viral DNA."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>E2 Disruption & Cancer</h1>
+      <p>Mapping the integration patterns, E2 gene disruption frequencies, and molecular consequences across HPV-positive tumors.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Cancer Types</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">693</div>
+        <div class="stat-label">Samples Analyzed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">95.8%</div>
+        <div class="stat-label">Peak Disruption (HPV18)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6.1x</div>
+        <div class="stat-label">Max E6/E7 Fold Change</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">E2 Protein Structure & Breakpoints</h2>
+    <div class="diagram-container">
+      <p style="color: #c8d0de; margin-bottom: 16px;">The E2 protein consists of an N-terminal Transactivation Domain (TAD), a flexible hinge region, and a C-terminal DNA Binding Domain (DBD). Breakpoints during viral integration frequently occur within the vulnerable hinge region.</p>
+      <div class="protein">
+        <div class="domain tad">TAD (1-200)</div>
+        <div class="domain hinge">Hinge (200-280)</div>
+        <div class="domain dbd">DBD (280-365)</div>
+        <div class="break-marker">⚡</div>
+        <div class="break-line"></div>
+      </div>
+      <div class="diagram-caption">Common integration breakpoint within the E2 hinge region.</div>
+    </div>
+
+    <h2 class="section-title">Integration Data Explorer</h2>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search cancer type...">
+      <select id="genotypeFilter">
+        <option value="all">All Genotypes</option>
+        <option value="HPV16">HPV16</option>
+        <option value="HPV18">HPV18</option>
+      </select>
+    </div>
+
+    <div class="table-container">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable('cancerType')">Cancer Type ↕</th>
+            <th onclick="sortTable('hpvGenotype')">Genotype ↕</th>
+            <th onclick="sortTable('sampleSize')">Samples ↕</th>
+            <th onclick="sortTable('e2DisruptionRate')">E2 Disrupted ↕</th>
+            <th onclick="sortTable('e6e7FoldChangeVsEpisomal')">E6/E7 Change ↕</th>
+            <th>Common Breakpoint</th>
+            <th>Source (PMID)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">Why is E2 disruption important in HPV-positive cancers? <span>+</span></div>
+        <div class="faq-answer">The E2 protein typically represses the transcription of the viral oncogenes E6 and E7. When HPV integrates into the host genome, the E2 gene is frequently disrupted or deleted. This loss of E2 repression leads to the uncontrolled overexpression of E6 and E7, driving cellular transformation and cancer progression.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Which region of the E2 gene is most commonly disrupted? <span>+</span></div>
+        <div class="faq-answer">The E2 hinge region (amino acids 200-250) is highly susceptible to breaks during integration. In many HPV16 cases, integration breakpoints cluster heavily in this domain.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Does E2 disruption occur in all HPV-positive cancers? <span>+</span></div>
+        <div class="faq-answer">No. While it is extremely common (e.g., ~78.5% in HPV16+ cervical cancer), some tumors maintain intact, episomal HPV genomes, or have integrated HPV where the E2 gene remains intact but is silenced via methylation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How does E2 disruption affect patient prognosis? <span>+</span></div>
+        <div class="faq-answer">In cervical cancer, E2 disruption often correlates with a more aggressive phenotype and poorer patient survival outcomes due to the stable overexpression of E6 and E7 oncogenes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Are there differences in E2 disruption rates between cancer types? <span>+</span></div>
+        <div class="faq-answer">Yes. Our compiled data shows that cervical cancers exhibit very high E2 disruption rates (78.5% for HPV16, 95.8% for HPV18), whereas HPV-positive oropharyngeal and head/neck cancers tend to have lower disruption rates (41-45%), often maintaining episomal viral DNA.</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Methodology & Sources</h2>
+    <div class="methodology">
+      <p>Data was compiled from a literature review of peer-reviewed studies detailing HPV integration across various cancer types. Sample sizes, E2 disruption rates, breakpoint regions, and E6/E7 expression levels were extracted and standardized.</p>
+      <br>
+      <p><strong>Sources (PMIDs):</strong></p>
+      <ul id="sourceList">
+        <!-- Populated by JS -->
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 <a href="/">HPV Research</a> · A <a href="https://gab.ae">GAB Ventures</a> property
+    <div class="disclaimer">This content is for educational and research purposes only. It is not medical advice. Consult a healthcare professional for any medical decisions.</div>
+  </div>
+
+  <script>
+    // Embedded Data
+    const rawData = {
+      "methodology": "Data compiled from a literature review of PubMed studies on HPV integration in various cancer types. Sample sizes, E2 disruption rates, breakpoint regions, and E6/E7 expression levels were extracted.",
+      "sources": [
+        "36139648",
+        "34885212",
+        "29649654",
+        "28069334",
+        "26239888",
+        "31322705"
+      ],
+      "data": [
+        { "cancerType": "cervical", "hpvGenotype": "HPV16", "sampleSize": 215, "e2DisruptionRate": 78.5, "commonBreakpointRegion": "E2 hinge region (aa 200-250)", "e6e7FoldChangeVsEpisomal": 4.2, "survivalCorrelation": "negative", "dataSource": "36139648", "year": 2022 },
+        { "cancerType": "oropharyngeal", "hpvGenotype": "HPV16", "sampleSize": 142, "e2DisruptionRate": 45.2, "commonBreakpointRegion": "E2 C-terminal domain", "e6e7FoldChangeVsEpisomal": 2.8, "survivalCorrelation": "neutral", "dataSource": "36139648", "year": 2022 },
+        { "cancerType": "penile", "hpvGenotype": "HPV16", "sampleSize": 45, "e2DisruptionRate": 55.6, "commonBreakpointRegion": "E2 hinge region", "e6e7FoldChangeVsEpisomal": 3.1, "survivalCorrelation": "unknown", "dataSource": "34885212", "year": 2021 },
+        { "cancerType": "cervical", "hpvGenotype": "HPV18", "sampleSize": 94, "e2DisruptionRate": 95.8, "commonBreakpointRegion": "E2 entire gene loss", "e6e7FoldChangeVsEpisomal": 6.1, "survivalCorrelation": "strongly negative", "dataSource": "29649654", "year": 2018 },
+        { "cancerType": "anal", "hpvGenotype": "HPV16", "sampleSize": 85, "e2DisruptionRate": 62.4, "commonBreakpointRegion": "E2 hinge region", "e6e7FoldChangeVsEpisomal": 3.5, "survivalCorrelation": "negative", "dataSource": "28069334", "year": 2017 },
+        { "cancerType": "head and neck", "hpvGenotype": "HPV16", "sampleSize": 112, "e2DisruptionRate": 41.1, "commonBreakpointRegion": "E2 C-terminal domain", "e6e7FoldChangeVsEpisomal": 2.5, "survivalCorrelation": "positive", "dataSource": "26239888", "year": 2015 }
+      ]
+    };
+
+    let currentData = [...rawData.data];
+    let sortCol = '';
+    let sortAsc = true;
+
+    // Table Rendering
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+      currentData.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="text-transform: capitalize;">${row.cancerType}</td>
+          <td><span class="mono" style="background: #152040; padding: 2px 6px; border-radius: 4px; color: #10b981;">${row.hpvGenotype}</span></td>
+          <td class="mono">${row.sampleSize}</td>
+          <td class="mono">${row.e2DisruptionRate}%</td>
+          <td class="mono">${row.e6e7FoldChangeVsEpisomal}x</td>
+          <td style="font-size: 0.85rem;">${row.commonBreakpointRegion}</td>
+          <td><a href="https://pubmed.ncbi.nlm.nih.gov/${row.dataSource}/" target="_blank" class="mono">${row.dataSource}</a></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Sorting
+    function sortTable(key) {
+      if (sortCol === key) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = key;
+        sortAsc = true;
+      }
+
+      currentData.sort((a, b) => {
+        let valA = a[key];
+        let valB = b[key];
+
+        if (typeof valA === 'string') valA = valA.toLowerCase();
+        if (typeof valB === 'string') valB = valB.toLowerCase();
+
+        if (valA < valB) return sortAsc ? -1 : 1;
+        if (valA > valB) return sortAsc ? 1 : -1;
+        return 0;
+      });
+      renderTable();
+    }
+
+    // Filtering & Searching
+    function applyFilters() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const genotype = document.getElementById('genotypeFilter').value;
+
+      currentData = rawData.data.filter(row => {
+        const matchSearch = row.cancerType.toLowerCase().includes(search);
+        const matchGenotype = genotype === 'all' || row.hpvGenotype === genotype;
+        return matchSearch && matchGenotype;
+      });
+      renderTable();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('genotypeFilter').addEventListener('change', applyFilters);
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        item.classList.toggle('active');
+        const span = q.querySelector('span');
+        span.textContent = item.classList.contains('active') ? '-' : '+';
+      });
+    });
+
+    // Render Sources
+    const sourceList = document.getElementById('sourceList');
+    rawData.sources.forEach(pmid => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="https://pubmed.ncbi.nlm.nih.gov/${pmid}/" target="_blank">PMID: ${pmid}</a>`;
+      sourceList.appendChild(li);
+    });
+
+    // Init
+    renderTable();
+  </script>
+</body>
+</html>

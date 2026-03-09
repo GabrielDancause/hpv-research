@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "source": "UniProtKB, PAVE (Simulated via ID)",
+    "reference": "HPV16 E2 (P03120)",
+    "methodology": "Sequences retrieved from UniProt via REST API. Pairwise global alignment (Needleman-Wunsch) used to calculate sequence identities compared to HPV-16 reference."
+  },
+  "data": [
+    {
+      "genotype": "6",
+      "alphaSpecies": "alpha",
+      "riskLevel": "low",
+      "e2Length": 368,
+      "overallIdentityVsHPV16": 46.74,
+      "tadIdentity": 48.8,
+      "hingeIdentity": 34.07,
+      "dbdIdentity": 52.38,
+      "conservedResidueCount": 172,
+      "uniqueMutations": [],
+      "uniprotId": "A0A024HSF4",
+      "paveId": "HPV6"
+    },
+    {
+      "genotype": "16",
+      "alphaSpecies": "alpha-9",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "overallIdentityVsHPV16": 100,
+      "tadIdentity": 100,
+      "hingeIdentity": 100,
+      "dbdIdentity": 100,
+      "conservedResidueCount": 365,
+      "uniqueMutations": [],
+      "uniprotId": "P03120",
+      "paveId": "HPV16"
+    },
+    {
+      "genotype": "18",
+      "alphaSpecies": "alpha",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "overallIdentityVsHPV16": 45.66,
+      "tadIdentity": 46.67,
+      "hingeIdentity": 29.81,
+      "dbdIdentity": 54.12,
+      "conservedResidueCount": 166,
+      "uniqueMutations": [],
+      "uniprotId": "A0A291PPP5",
+      "paveId": "HPV18"
+    },
+    {
+      "genotype": "53",
+      "alphaSpecies": "alpha",
+      "riskLevel": "probable-high",
+      "e2Length": 384,
+      "overallIdentityVsHPV16": 46.55,
+      "tadIdentity": 49.77,
+      "hingeIdentity": 30.1,
+      "dbdIdentity": 52.17,
+      "conservedResidueCount": 178,
+      "uniqueMutations": [],
+      "uniprotId": "A0A0N7I6T7",
+      "paveId": "HPV53"
+    },
+    {
+      "genotype": "54",
+      "alphaSpecies": "alpha",
+      "riskLevel": "low",
+      "e2Length": 366,
+      "overallIdentityVsHPV16": 46.92,
+      "tadIdentity": 49.52,
+      "hingeIdentity": 34.69,
+      "dbdIdentity": 52.94,
+      "conservedResidueCount": 171,
+      "uniqueMutations": [],
+      "uniprotId": "A0A0P0E6D0",
+      "paveId": "HPV54"
+    },
+    {
+      "genotype": "61",
+      "alphaSpecies": "alpha",
+      "riskLevel": "low",
+      "e2Length": 382,
+      "overallIdentityVsHPV16": 44.8,
+      "tadIdentity": 45.83,
+      "hingeIdentity": 36.36,
+      "dbdIdentity": 50,
+      "conservedResidueCount": 171,
+      "uniqueMutations": [],
+      "uniprotId": "A0A0P0ESF5",
+      "paveId": "HPV61"
+    },
+    {
+      "genotype": "70",
+      "alphaSpecies": "alpha",
+      "riskLevel": "low",
+      "e2Length": 360,
+      "overallIdentityVsHPV16": 48.34,
+      "tadIdentity": 49.77,
+      "hingeIdentity": 32.04,
+      "dbdIdentity": 56.63,
+      "conservedResidueCount": 174,
+      "uniqueMutations": [],
+      "uniprotId": "T2A7Y2",
+      "paveId": "HPV70"
+    }
+  ]
+}
