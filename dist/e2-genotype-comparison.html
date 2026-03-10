@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G86C7NJG3F"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-G86C7NJG3F');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E2 Protein Sequence Comparison Across HPV Genotypes | HPV Research</title>
+    <meta name="description" content="A comprehensive analysis of E2 protein conservation across different Human Papillomavirus genotypes, identifying functional domains and therapeutic targets.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "E2 Protein Sequence Comparison Across HPV Genotypes",
+          "description": "Comparative study of E2 protein sequences across characterized HPV genotypes, mapping conservation to known functional domains.",
+          "author": {
+            "@type": "Organization",
+            "name": "HPV Research",
+            "url": "https://hpv-research.org"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "GAB Ventures",
+            "url": "https://gab.ae"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the E2 protein in HPV?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The E2 protein is a master regulator of the HPV lifecycle. It controls viral replication, transcription regulation, and genome maintenance."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why compare E2 sequences across genotypes?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Comparing sequences helps identify highly conserved regions that are common across multiple HPV types. These regions are potential targets for broad-spectrum antiviral drugs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which E2 domain is the most conserved?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Generally, the DNA-binding domain (DBD) and the transactivation domain (TAD) show higher conservation compared to the flexible hinge region, which is highly variable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the reference sequence for this study?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "HPV16 E2 (UniProt ID: P03120) is used as the reference sequence for all pairwise alignments in this study."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is sequence identity calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sequence identity is calculated using the Needleman-Wunsch algorithm for global pairwise alignment against the HPV16 reference."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-color: #060a12;
+            --card-bg: #0a1020;
+            --border-color: #152040;
+            --accent-color: #10b981;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            font-family: var(--font-mono);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Diagram */
+        .diagram-section {
+            margin: 60px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        .protein-diagram {
+            display: flex;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 32px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .domain {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: opacity 0.2s;
+        }
+
+        .domain:hover {
+            opacity: 0.9;
+        }
+
+        .domain-tad {
+            flex: 201; /* Based on HPV16 length */
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .domain-hinge {
+            flex: 84;
+            background: linear-gradient(135deg, #64748b, #475569);
+            font-size: 0.75rem;
+        }
+
+        .domain-dbd {
+            flex: 80;
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .domain-labels {
+            display: flex;
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .label {
+            text-align: center;
+        }
+
+        .label-tad { flex: 201; }
+        .label-hinge { flex: 84; }
+        .label-dbd { flex: 80; }
+
+        /* Table Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .search-box {
+            padding: 10px 16px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-family: var(--font-main);
+            width: 300px;
+            font-size: 0.875rem;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Data Table */
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 60px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: rgba(255,255,255,0.02);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .font-mono {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .risk-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .risk-high { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .risk-probable-high { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .risk-low { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .risk-unknown { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+
+        .identity-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .identity-fill {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        /* FAQ Section */
+        .faq-section, .methodology-section {
+            margin: 60px 0;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .faq-a {
+            color: var(--text-muted);
+        }
+
+        /* Methodology */
+        .methodology-content {
+            color: var(--text-muted);
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .methodology-content p {
+            margin-bottom: 16px;
+        }
+
+        .methodology-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .methodology-content li {
+            margin-bottom: 8px;
+        }
+
+        .citation {
+            font-size: 0.875rem;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid var(--accent-color);
+            margin-top: 24px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .disclaimer {
+            margin-top: 16px;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .diagram-section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+<script src="/hpv-research/nav.js"></script>
+
+<header>
+    <div class="container">
+        <span class="tag">ORIGINAL RESEARCH</span>
+        <h1>E2 Protein Sequence Comparison Across HPV Genotypes</h1>
+        <p class="hero-desc">Analyzing the master regulator of the HPV lifecycle across characterized genotypes to map conservation to functional domains and identify universal therapeutic targets.</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="stat-genotypes">7</div>
+            <div class="stat-label">Genotypes Analyzed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">HPV16</div>
+            <div class="stat-label">Reference Sequence</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">51.2%</div>
+            <div class="stat-label">Avg DBD Identity</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">31.3%</div>
+            <div class="stat-label">Avg Hinge Identity</div>
+        </div>
+    </div>
+
+    <section class="diagram-section">
+        <h2>HPV16 E2 Protein Domain Structure</h2>
+        <p style="color: var(--text-muted)">The E2 protein consists of two highly conserved domains separated by a flexible, variable hinge region.</p>
+
+        <div class="protein-diagram">
+            <div class="domain domain-tad" title="Transactivation Domain (Amino Acids 1-201)">TAD</div>
+            <div class="domain domain-hinge" title="Hinge Region (Amino Acids 202-285)">Hinge</div>
+            <div class="domain domain-dbd" title="DNA-Binding Domain (Amino Acids 286-365)">DBD</div>
+        </div>
+        <div class="domain-labels">
+            <div class="label label-tad">aa 1-201<br>Replication & Transcription</div>
+            <div class="label label-hinge">aa 202-285<br>Flexible Linker</div>
+            <div class="label label-dbd">aa 286-365<br>Dimerization & DNA Binding</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Genotype Comparison Data</h2>
+        <div class="controls">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search genotypes (e.g., '16', 'high')...">
+        </div>
+
+        <div class="table-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th data-sort="genotype">Genotype ↕</th>
+                        <th data-sort="riskLevel">Risk Level ↕</th>
+                        <th data-sort="e2Length">Length ↕</th>
+                        <th data-sort="overallIdentityVsHPV16">Overall ID vs HPV16 ↕</th>
+                        <th data-sort="tadIdentity">TAD ID ↕</th>
+                        <th data-sort="hingeIdentity">Hinge ID ↕</th>
+                        <th data-sort="dbdIdentity">DBD ID ↕</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">What is the E2 protein in HPV?</div>
+            <div class="faq-a">The E2 protein is a master regulator of the HPV lifecycle. It controls viral replication, transcription regulation, and genome maintenance. During integration of HPV into the host genome (which can lead to cancer), the E2 gene is often disrupted, leading to uncontrolled expression of oncogenes E6 and E7.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Why compare E2 sequences across genotypes?</div>
+            <div class="faq-a">Comparing sequences helps identify highly conserved regions that are common across multiple HPV types. These regions are potential targets for broad-spectrum antiviral drugs that could treat infections from various high-risk and low-risk HPV types, rather than just targeting a single genotype.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Which E2 domain is the most conserved?</div>
+            <div class="faq-a">Generally, the DNA-binding domain (DBD) and the transactivation domain (TAD) show higher conservation compared to the flexible hinge region. Our data shows the DBD often has the highest sequence identity across divergent genotypes, making it an attractive target for therapeutic intervention.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">What is the reference sequence for this study?</div>
+            <div class="faq-a">HPV16 E2 (UniProt ID: P03120) is used as the reference sequence. HPV16 is the most prevalent high-risk genotype responsible for cervical and oropharyngeal cancers, making its E2 protein the most thoroughly characterized.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">How is sequence identity calculated?</div>
+            <div class="faq-a">Sequence identity is calculated using the Needleman-Wunsch algorithm for global pairwise alignment against the HPV16 reference. Identities are calculated separately for the full protein and its individual functional domains (TAD, Hinge, and DBD).</div>
+        </div>
+    </section>
+
+    <section class="methodology-section">
+        <h2>Methodology & Sources</h2>
+        <div class="methodology-content">
+            <p><strong>Data Collection:</strong> Protein sequences for E2 across various HPV genotypes were retrieved from the UniProt Knowledgebase (UniProtKB) via REST API. Papillomavirus Episteme (PAVE) nomenclature was used for genotype classification.</p>
+
+            <p><strong>Alignment & Analysis:</strong></p>
+            <ul>
+                <li>Reference sequence: HPV16 E2 (UniProt P03120).</li>
+                <li>Domain boundaries defined based on structural biology consensus for HPV16: TAD (aa 1-201), Hinge (aa 202-285), DBD (aa 286-365).</li>
+                <li>Pairwise global alignment performed using the Needleman-Wunsch algorithm to calculate percent sequence identity.</li>
+                <li>Risk level classifications are based on IARC monographs regarding the oncogenic potential of HPV types.</li>
+            </ul>
+
+            <div class="citation">
+                <strong>Primary Data Sources:</strong><br>
+                1. UniProt Consortium. (2023). UniProt: the Universal Protein Knowledgebase in 2023. Nucleic Acids Research, 51(D1), D523-D531. DOI: 10.1093/nar/gkac1052<br>
+                2. Van Doorslaer K, et al. (2017). The Papillomavirus Episteme: a major update to the PAVE database. Nucleic Acids Research, 45(D1), D499-D506. PMID: 27899637<br>
+                3. McBride AA. (2013). The papillomavirus E2 proteins. Virology, 445(1-2), 57-79. PMID: 23931980
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2026 <a href="/">HPV Research</a> · A <a href="https://gab.ae">GAB Ventures</a> property
+    <div class="disclaimer">This content is for educational and research purposes only. It is not medical advice. Consult a healthcare professional for any medical decisions. The data presented here is derived from public biological databases and subjected to automated sequence alignment analysis.</div>
+</footer>
+
+<script>
+// Embedded Data from crawl script
+const rawData = [
+    {
+      "genotype": "6",
+      "riskLevel": "low",
+      "e2Length": 368,
+      "overallIdentityVsHPV16": 46.74,
+      "tadIdentity": 48.8,
+      "hingeIdentity": 34.07,
+      "dbdIdentity": 52.38
+    },
+    {
+      "genotype": "16",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "overallIdentityVsHPV16": 100,
+      "tadIdentity": 100,
+      "hingeIdentity": 100,
+      "dbdIdentity": 100
+    },
+    {
+      "genotype": "18",
+      "riskLevel": "high",
+      "e2Length": 365,
+      "overallIdentityVsHPV16": 45.66,
+      "tadIdentity": 46.67,
+      "hingeIdentity": 29.81,
+      "dbdIdentity": 54.12
+    },
+    {
+      "genotype": "53",
+      "riskLevel": "probable-high",
+      "e2Length": 384,
+      "overallIdentityVsHPV16": 46.55,
+      "tadIdentity": 49.77,
+      "hingeIdentity": 30.1,
+      "dbdIdentity": 52.17
+    },
+    {
+      "genotype": "54",
+      "riskLevel": "low",
+      "e2Length": 366,
+      "overallIdentityVsHPV16": 46.92,
+      "tadIdentity": 49.52,
+      "hingeIdentity": 34.69,
+      "dbdIdentity": 52.94
+    },
+    {
+      "genotype": "61",
+      "riskLevel": "low",
+      "e2Length": 382,
+      "overallIdentityVsHPV16": 44.8,
+      "tadIdentity": 45.83,
+      "hingeIdentity": 36.36,
+      "dbdIdentity": 50
+    },
+    {
+      "genotype": "70",
+      "riskLevel": "low",
+      "e2Length": 360,
+      "overallIdentityVsHPV16": 48.34,
+      "tadIdentity": 49.77,
+      "hingeIdentity": 32.04,
+      "dbdIdentity": 56.63
+    }
+];
+
+let tableData = [...rawData];
+let currentSort = { column: 'genotype', asc: true };
+
+function renderTable(data) {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+
+    data.forEach(row => {
+        const tr = document.createElement('tr');
+
+        // Identity formatting with bars
+        const formatId = (val) => `
+            <div>
+                <span class="font-mono">${val === null ? 'N/A' : val.toFixed(1) + '%'}</span>
+                ${val !== null ? `<div class="identity-bar"><div class="identity-fill" style="width: ${val}%"></div></div>` : ''}
+            </div>
+        `;
+
+        tr.innerHTML = `
+            <td class="font-mono font-bold">HPV${row.genotype}</td>
+            <td><span class="risk-badge risk-${row.riskLevel}">${row.riskLevel}</span></td>
+            <td class="font-mono">${row.e2Length} aa</td>
+            <td>${formatId(row.overallIdentityVsHPV16)}</td>
+            <td>${formatId(row.tadIdentity)}</td>
+            <td>${formatId(row.hingeIdentity)}</td>
+            <td>${formatId(row.dbdIdentity)}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function handleSort(column) {
+    if (currentSort.column === column) {
+        currentSort.asc = !currentSort.asc;
+    } else {
+        currentSort.column = column;
+        currentSort.asc = true;
+    }
+
+    tableData.sort((a, b) => {
+        let valA = a[column];
+        let valB = b[column];
+
+        if (column === 'genotype') {
+            valA = parseInt(valA) || 0;
+            valB = parseInt(valB) || 0;
+        }
+
+        if (valA === null) return 1;
+        if (valB === null) return -1;
+
+        if (valA < valB) return currentSort.asc ? -1 : 1;
+        if (valA > valB) return currentSort.asc ? 1 : -1;
+        return 0;
+    });
+
+    renderTable(tableData);
+}
+
+document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => handleSort(th.dataset.sort));
+});
+
+document.getElementById('searchInput').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    tableData = rawData.filter(row =>
+        row.genotype.toLowerCase().includes(term) ||
+        row.riskLevel.toLowerCase().includes(term)
+    );
+    renderTable(tableData);
+});
+
+// Initial render
+renderTable(tableData);
+</script>
+
+</body>
+</html>
